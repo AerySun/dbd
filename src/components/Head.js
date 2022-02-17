@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import  {useState} from "react"
-
-
+import { useRecoilState } from "recoil";
+import { searchTextState } from "./atom";
 
 const Head = ({ className }) => {
-    const [searchTerm, setSearchTerm] = useState('')
+    const [searchTerm, setSearchTerm] = useRecoilState(searchTextState)
     const [count, setCount] = useState(0)
     return(
         <div className={className}>
