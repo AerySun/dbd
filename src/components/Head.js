@@ -2,18 +2,20 @@ import styled from "styled-components";
 import  {useState} from "react"
 import { useRecoilState } from "recoil";
 import { searchTextState } from "./atom";
+import dbdJson from "dbd-json";
+
 
 const Head = ({ className }) => {
     const [searchTerm, setSearchTerm] = useRecoilState(searchTextState)
-    const [count, setCount] = useState(0)
+    
+
     return(
         <div className={className}>
             <div className="container">
                 <input type='search' id='searchBar' placeholder="Search..." className="Search" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}></input>
-                <button className='count' onClick={() => setCount(count + 1)}>you searched {count} times</button>
-            </div>
+            </div>  
         </div>
-        )
+    )
 }
 
 

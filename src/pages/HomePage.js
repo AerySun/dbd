@@ -1,33 +1,36 @@
 import styled from "styled-components";
-import * as dbd from 'dbd-json'
+import dbdJson, * as dbd from 'dbd-json'
 import Head from "../components/Head";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { searchTextState } from "../components/atom";
+import { useState } from "react";
 
 
 const HomePage = ({ className }) => {
-    const [text, setText] = useRecoilState(searchTextState);
+    const searchTerm = useRecoilValue(searchTextState)
+
+    const filter = () => {
+        if (searchTerm !== '') {
+            const results = dbdJson.Survivors.filter((survivor) => {
+                const matches = (searchStr) => searchStr.toLowerCase().includes(searchTerm.toLowerCase())
+                return matches(survivor.name) || matches(survivor.perks.join(','))
+            })
+            return results
+        }
+        return dbdJson.Survivors
+    }
+
     return (
         <div className={className}>
             <Head/>
             <div className='split'>
                 <div>
-                    {dbd.Survivors.map(survivor => (
-                        <div className='names' key={survivor.index}>{survivor.name}</div>
+                    {filter().map(survivor => (
+                        <div key={survivor.index}>
+                            <div className='names'>{survivor.name}</div>
+                            <div className='perks'>{survivor.perks.join(', ')}</div>
+                        </div>
                     ))}
-                </div>
-                <div>
-                    {dbd.Survivors.map(survivor => (
-                        <div className='perks' key={survivor.index}>{survivor.difficulty}</div>
-                    ))}
-                </div>
-                {/* <div>
-                    {dbd.Survivors.map(survivor => (
-                        <div className='outcome' key={survivor.name}>{survivor.name.searchTextState}</div>
-                    ))}
-                </div> */}
-                <div>
-                    <br />Echo: {text}
                 </div>
             </div>
         </div>
