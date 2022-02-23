@@ -1,14 +1,11 @@
 import styled from "styled-components";
-import  {useState} from "react"
 import { useRecoilState } from "recoil";
 import { searchTextState } from "./atom";
-import dbdJson from "dbd-json";
 
 
 const Head = ({ className }) => {
     const [searchTerm, setSearchTerm] = useRecoilState(searchTextState)
     
-
     return(
         <div className={className}>
             <div className="container">
@@ -23,24 +20,21 @@ const Head = ({ className }) => {
 
 export default styled(Head)`
 background-color: #ccedcc;
-
-.count{
-    border: 1px solid black;
-    background-color: white ;
-    border-radius:.33rem ;
-}
+padding: 1rem;
 
 .Search{
+    padding: .25rem;
     border-color:none ;
     border-radius: .33rem;
     outline:none;
     text-decoration:none ;
     appearance:none;
     border: 1px solid black;
+    font-size: .85rem;
 }
 
 .container{
-    text-align: center;
+    padding-left: 1rem ;
 }
 
 `
