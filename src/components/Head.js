@@ -3,6 +3,8 @@ import { useRecoilState } from "recoil";
 import { searchTextState } from "./atom";
 
 
+
+
 const Head = ({ className }) => {
     const [searchTerm, setSearchTerm] = useRecoilState(searchTextState)
     
@@ -19,11 +21,16 @@ const Head = ({ className }) => {
 
 
 export default styled(Head)`
-background-color: #ccedcc;
-padding: 1rem;
+/* background-color: #38404d; */
+padding: .75rem;
+background-image: url('https://p.kindpng.com/picc/s/140-1408893_dead-by-daylight-png-transparent-png.png');
+background-size: 13%;
+background-position: 50% 50%;
+
+
 
 .Search{
-    padding: .25rem;
+    padding: .5rem;
     border-color:none ;
     border-radius: .33rem;
     outline:none;
