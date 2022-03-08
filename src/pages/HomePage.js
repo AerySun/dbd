@@ -73,7 +73,6 @@ export default styled(HomePage)`
         }
         transition: all .1s ease;
         padding: 1rem;
-        /* border-style: outset; */
         box-shadow: 0px .25rem .25rem 0 rgba(0,0,0,0.2), 0px -.25rem .25rem 0 rgba(0,0,0,0.1);
         border-radius: .33rem;
         &__name {
